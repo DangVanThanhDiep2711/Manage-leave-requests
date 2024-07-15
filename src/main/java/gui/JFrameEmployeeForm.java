@@ -25,7 +25,12 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import com.toedter.calendar.JDateChooser;
+
+import subFrame.MakeAnRequest;
+import subFrame.MyRequests;
+
 import javax.swing.UIManager;
+import components.FormtableEmp;
 
 public class JFrameEmployeeForm extends JFrame {
 
@@ -42,18 +47,6 @@ public class JFrameEmployeeForm extends JFrame {
     private JButton btnCancel;
     private JTextField txtSearch;
     private JPanel panelLeaveRequests;
-    private JLabel lblNewLabel;
-    private JLabel lblEmployeeid;
-    private JLabel lblLeavetype;
-    private JLabel lblStartdate;
-    private JLabel lblEndDate;
-    private JLabel lblReason;
-    private JComboBox<String> comboBox;
-    private JTextPane textPane;
-    private JDateChooser dateStart;
-    private JDateChooser dateEnd;
-    private JButton btnSubmit;
-    private JTextField txtName;
     private JPanel panelInformation;
     private JLabel lblInfo;
     private JLabel lblId;
@@ -65,6 +58,8 @@ public class JFrameEmployeeForm extends JFrame {
     private JTextField textField_4;
     private JTextField textField_5;
     private JPanel panel;
+    private JPanel panel_1;
+    private FormtableEmp formtableEmp;
 
     /**
      * Launch the application.
@@ -94,7 +89,7 @@ public class JFrameEmployeeForm extends JFrame {
         setResizable(false);
         setTitle("EmployeeForm");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 900, 600);
+        setBounds(100, 100, 900, 598);
         
         menuBar = new JMenuBar();
         setJMenuBar(menuBar);
@@ -154,65 +149,14 @@ public class JFrameEmployeeForm extends JFrame {
         panelLeaveRequests.setBackground(Color.LIGHT_GRAY);
         contentPane.add(panelLeaveRequests, "leaveRequests");
         
-        lblNewLabel = new JLabel("Leave Request");
-        lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 24));
-        lblNewLabel.setBounds(351, 11, 187, 32);
-        panelLeaveRequests.add(lblNewLabel);
+        panel_1 = new JPanel();
+        panel_1.setBounds(0, 0, 874, 524);
+        panelLeaveRequests.add(panel_1);
+        panel_1.setLayout(null);
         
-        lblEmployeeid = new JLabel("Employee Name :");
-        lblEmployeeid.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblEmployeeid.setBounds(27, 94, 120, 14);
-        panelLeaveRequests.add(lblEmployeeid);
-        
-        lblLeavetype = new JLabel("LeaveType  :");
-        lblLeavetype.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblLeavetype.setBounds(25, 173, 84, 14);
-        panelLeaveRequests.add(lblLeavetype);
-        
-        lblStartdate = new JLabel("StartDate :");
-        lblStartdate.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblStartdate.setBounds(25, 123, 84, 14);
-        panelLeaveRequests.add(lblStartdate);
-        
-        lblEndDate = new JLabel("EndDate :");
-        lblEndDate.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblEndDate.setBounds(25, 148, 84, 14);
-        panelLeaveRequests.add(lblEndDate);
-        
-        lblReason = new JLabel("Reason :");
-        lblReason.setFont(new Font("Tahoma", Font.BOLD, 13));
-        lblReason.setBounds(25, 206, 84, 14);
-        panelLeaveRequests.add(lblReason);
-        
-        comboBox = new JComboBox<String>();
-        comboBox.setBounds(176, 170, 559, 22);
-        panelLeaveRequests.add(comboBox);
-        
-		comboBox.addItem("On leave");
-		comboBox.addItem("Sick leave");
-		comboBox.addItem("Maternity leave");
-        
-        textPane = new JTextPane();
-        textPane.setBounds(176, 206, 559, 149);
-        panelLeaveRequests.add(textPane);
-        
-        dateStart = new JDateChooser();
-        dateStart.setBounds(176, 117, 559, 20);
-        panelLeaveRequests.add(dateStart);
-        
-        dateEnd = new JDateChooser();
-        dateEnd.setBounds(176, 142, 559, 20);
-        panelLeaveRequests.add(dateEnd);
-        
-        btnSubmit = new JButton("Submit");
-        btnSubmit.setFont(new Font("Tahoma", Font.BOLD, 15));
-        btnSubmit.setBounds(363, 418, 109, 22);
-        panelLeaveRequests.add(btnSubmit);
-        
-        txtName = new JTextField();
-        txtName.setColumns(10);
-        txtName.setBounds(176, 92, 559, 20);
-        panelLeaveRequests.add(txtName);
+        formtableEmp = new FormtableEmp();
+        formtableEmp.setBounds(32, 11, 797, 485);
+        panel_1.add(formtableEmp);
         
         panelInformation = new JPanel();
         panelInformation.setBackground(new Color(192, 192, 192));
@@ -274,7 +218,7 @@ public class JFrameEmployeeForm extends JFrame {
         // Add action listener to Leave Requests button
         btnLeaveRequests.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(contentPane, "leaveRequests");
+            	 cardLayout.show(contentPane, "leaveRequests");
             }
         });
         
@@ -284,5 +228,8 @@ public class JFrameEmployeeForm extends JFrame {
                 cardLayout.show(contentPane, "leaveHistory");
             }
         });
-    }
+        
+        }
+    
+    
 }
